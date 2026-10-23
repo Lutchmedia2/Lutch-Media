@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lutch Media — Vertical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070707;--ink:#d9d6d0;--dim:#8a8782;--line:#232323;--serif:'Cormorant Garamond','Times New Roman',serif;--sans:'Inter',Helvetica,Arial,sans-serif;--mono:ui-monospace,Menlo,Consolas,monospace;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid #fff;outline-offset:4px}
+.wrap{padding-inline:clamp(20px,5vw,64px)}
+.tiny{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.serif{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
+.btn{display:inline-flex;gap:14px;align-items:center;background:#f2f0ec;color:#0a0a0a;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:18px 24px;font-weight:500;transition:background .3s}
+.btn:hover{background:#fff}
+nav{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(22px + env(safe-area-inset-top,0px)) clamp(20px,5vw,64px) 22px;background:linear-gradient(#070707e6,transparent)}
+.logo{font-weight:300;font-size:20px;letter-spacing:.22em;line-height:1}
+.logo small{display:block;font-size:6px;letter-spacing:.5em;margin-top:3px;padding-left:2px;color:var(--dim)}
+.navr{display:flex;align-items:center;gap:30px}
+.navr a.h{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c9c6c0}
+.navr a.h:hover{color:#fff}
+.menu{display:flex;gap:28px;list-style:none;margin:0;padding:0;align-items:center}
+.menu a{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c9c6c0;white-space:nowrap}
+.menu a:hover,.menu a[aria-current="page"]{color:#fff}
+.menu a.bk{border:1px solid #cfccc6;padding:8px 14px;color:#f2f0ec;transition:.25s}
+.menu a.bk:hover{background:#f2f0ec;color:#0a0a0a}
+@media(max-width:820px){.menu{gap:16px}}
+@media(max-width:700px){nav{flex-wrap:wrap;row-gap:12px}.navr{display:contents}.lang{order:2}.menu{order:3;width:100%;justify-content:space-between;gap:8px}.menu a{font-size:8px;letter-spacing:.12em}.menu a.bk{padding:7px 10px}.intro{padding-top:140px}}
+.lang{display:inline-flex;border:1px solid #3a3a3a;border-radius:99px;padding:2px;background:#0b0b0b99}
+.lang button{all:unset;cursor:pointer;font-size:9px;letter-spacing:.18em;padding:6px 11px;border-radius:99px;color:var(--dim)}
+.lang button[aria-pressed="true"]{background:#f2f0ec;color:#0a0a0a}
+.lang button:focus-visible{outline:1px solid #fff}
+
+.intro{padding-top:130px;padding-bottom:10px}
+.intro h1{font-size:clamp(40px,6.4vw,84px);color:#cfccc6;margin:16px 0 18px}
+.intro h1 em{font-style:italic}
+.intro p{max-width:420px;color:var(--dim);font-size:13px;margin:0}
+
+.meta{display:flex;justify-content:space-between;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#77746f;padding-top:34px}
+.stage{position:relative;height:min(86svh,820px);margin-top:-6px;user-select:none;touch-action:pan-y;cursor:grab}
+.stage:active{cursor:grabbing}
+.card{position:absolute;left:50%;top:50%;width:min(26vw,40svh);min-width:150px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--g);transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s;will-change:transform;box-shadow:0 30px 60px #000a;border:0;padding:0;color:inherit;font:inherit;text-align:left}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(#00000030,transparent 30%,transparent 55%,#000000c0)}
+.card.on::before{content:"";position:absolute;inset:-40%;z-index:1;background:linear-gradient(100deg,transparent 42%,#ffffff1f 50%,transparent 58%);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{from{transform:translateX(-60%)}to{transform:translateX(60%)}}
+.card .no{position:absolute;z-index:2;left:12px;top:12px;font:400 9px var(--mono);letter-spacing:.14em;color:#ffffff99}
+.card .cap{position:absolute;z-index:2;left:0;right:0;bottom:15%;text-align:center;font-weight:500;font-size:clamp(14px,1.5vw,20px);letter-spacing:.02em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px #000}
+.card .lb{position:absolute;z-index:2;left:0;right:0;bottom:5%;text-align:center;font:400 9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#e8e5df}
+.ctrl{display:flex;justify-content:center;align-items:center;gap:22px;margin:6px 0 20px}
+.arr{all:unset;cursor:pointer;width:46px;height:46px;border:1px solid #cfccc666;border-radius:50%;display:grid;place-items:center;transition:.25s}
+.arr:hover{background:#ffffff18}.arr:focus-visible{outline:1px solid #fff;outline-offset:3px}
+.dots{display:flex;gap:12px}
+.dots button{all:unset;cursor:pointer;width:8px;height:8px;border-radius:50%;background:#6a6762;transition:.3s}
+.dots button[aria-current="true"]{background:#fff;transform:scale(1.4)}
+.dots button:focus-visible{outline:1px solid #fff;outline-offset:3px}
+
+.sec{padding-block:clamp(70px,10vw,120px);border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.grid div{border-top:1px solid var(--line);padding-top:20px}
+.grid .n{font-size:9px;color:var(--dim);letter-spacing:.2em}
+.grid h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;margin:16px 0 10px}
+.grid p{margin:0;font-size:12px;color:var(--dim)}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr;gap:30px}}
+.phead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.phead h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,52px);line-height:1.05;color:#d6d3cd;margin:12px 0 0;max-width:18ch}
+.ul{display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--line);transition:border-color .3s}
+.ul:hover{border-color:#f2f0ec}
+.pgrid{columns:3;column-gap:4px}
+@media(max-width:700px){.pgrid{columns:2}}
+.pt{position:relative;display:block;break-inside:avoid;margin-bottom:4px;aspect-ratio:var(--ar);background:var(--g);overflow:hidden}
+.pt::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#000000b0)}
+.pt span{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;font-family:var(--serif);font-size:clamp(17px,1.6vw,22px);line-height:1.15;color:#ece9e2}
+.cta{text-align:center}
+.cta h2{font-size:clamp(34px,5vw,56px);color:#d6d3cd;margin-bottom:18px}
+.cta p{font-size:12px;color:var(--dim);margin:0 auto 34px;max-width:440px}
+footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+footer a:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card.on::before{animation:none}}
+@media(max-width:520px){.navr a.h{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo" aria-label="Lutch Media home">LUTCH<small>MEDIA</small></a>
+  <div class="navr">
+    <ul class="menu"><li><a href="index.html#services" data-i="n_serv">Our services</a></li><li><a href="index.html#work" data-i="n_work">Work</a></li><li><a href="index.html#contact" data-i="n_con">Contact</a></li><li><a class="bk" href="book.html" data-i="n_book">Book now</a></li></ul>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="mfe" aria-pressed="false" lang="mfe">KREOL</button>
+    </div>
+  </div>
+</nav>
+
+<header class="intro wrap">
+  <span class="tiny" data-i="tag">Vertical content</span>
+  <h1 class="serif" data-i="h1">Vertical, but make it <em>iconic.</em></h1>
+  <p data-i="sub">Reels, TikToks, Shorts and Stories, shot like cinema and cut for the scroll. Thumbs will stop.</p>
+</header>
+
+<section aria-label="Vertical work" class="wrap" style="padding-inline:0">
+  <div class="meta wrap"><span>(01) 9:16 format</span><span id="count">04 / 07</span></div>
+  <div class="stage" id="stage" aria-roledescription="carousel"></div>
+  <div class="ctrl">
+    <button class="arr" id="prev" aria-label="Previous"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#e8e5df"><path d="M7 1L1 7l6 6"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button class="arr" id="next" aria-label="Next"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#e8e5df"><path d="M1 1l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<section class="sec wrap" id="photography">
+  <div class="phead"><div><span class="tiny" data-i="pt">Photography portfolio</span><h2 data-i="ph2">Stills, because not everything has to move.</h2></div><a class="ul" href="photography.html"><span data-i="pall">See all photography</span> ↗</a></div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+<section class="sec wrap">
+  <div class="grid">
+    <div><span class="n">01</span><h3 data-i="g1t">Shot for the thumb</h3><p data-i="g1p">9:16 from the first frame. Not a landscape video squished into a phone.</p></div>
+    <div><span class="n">02</span><h3 data-i="g2t">Hook in 1.5 seconds</h3><p data-i="g2p">If it doesn’t grab you before your thumb moves, we go again.</p></div>
+    <div><span class="n">03</span><h3 data-i="g3t">Made to be sent</h3><p data-i="g3p">Built for the group chat, the repost and the “omg look” text.</p></div>
+    <div><span class="n">04</span><h3 data-i="g4t">Every format</h3><p data-i="g4p">Reels, TikToks, Shorts, Stories, paid. Same energy, different shape.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap cta">
+  <h2 class="serif" data-i="c_h">Got a brand that needs to stop thumbs?</h2>
+  <p data-i="c_p">No briefs in Comic Sans, no forms. Just email us and let’s make scene.</p>
+  <a class="btn" href="mailto:hello@lutchmedia.com?subject=Let%27s%20make%20scene"><span data-i="c_b">Let’s make scene</span> <span>↗</span></a>
+</section>
+
+<footer class="wrap">
+  <span>© Lutch Media 2024</span>
+  <a href="mailto:hello@lutchmedia.com">hello@lutchmedia.com</a>
+  <span><a href="#">Instagram</a> &nbsp;&nbsp; <a href="#">TikTok</a></span>
+</footer>
+
+<script>
+const T={
+en:{home:"Home",n_serv:"Our services",n_work:"Work",n_con:"Contact",n_book:"Book now",pt:"Photography portfolio",ph2:"Stills, because not everything has to move.",pall:"See all photography",tag:"Vertical content",h1:"Vertical, but make it <em>iconic.</em>",sub:"Reels, TikToks, Shorts and Stories, shot like cinema and cut for the scroll. Thumbs will stop.",
+g1t:"Shot for the thumb",g1p:"9:16 from the first frame. Not a landscape video squished into a phone.",
+g2t:"Hook in 1.5 seconds",g2p:"If it doesn’t grab you before your thumb moves, we go again.",
+g3t:"Made to be sent",g3p:"Built for the group chat, the repost and the “omg look” text.",
+g4t:"Every format",g4p:"Reels, TikToks, Shorts, Stories, paid. Same energy, different shape.",
+c_h:"Got a brand that needs to stop thumbs?",c_p:"No briefs in Comic Sans, no forms. Just email us and let’s make scene.",c_b:"Let’s make scene"},
+mfe:{home:"Lakaz",n_serv:"Nou servis",n_work:"Travay",n_con:"Kontak",n_book:"Rezerv asterer",pt:"Portfolio fotografi",ph2:"Foto, parski pa tou kitsoz bizin bouze.",pall:"Get tou foto",tag:"Kontenu vertikal",h1:"Vertikal, me fer li <em>iconik.</em>",sub:"Reels, TikTok, Shorts ek Stories, filme kouma sinema, ek kouple pou skrol. Bann pous pou arete.",
+g1t:"Filme pou ou pous",g1p:"9:16 depi premie frame. Pa enn video orizontal ki finn ganny kraze dan enn telefonn.",
+g2t:"Kapte ou an 1,5 segonn",g2p:"Si li pa kapte ou avan ou pous bouze, nou rekomans.",
+g3t:"Fer pou ganny voye",g3p:"Fer pou group chat, repost ek mesaz “get sa mo frer”.",
+g4t:"Tou format",g4p:"Reels, TikTok, Shorts, Stories, piblisite. Menm lenerzi, form diferan.",
+c_h:"Ena enn brand ki bizin arete bann pous?",c_p:"Okenn brief an Comic Sans, okenn form. Zis ekrir nou ek annou fer sen.",c_b:"Annou fer sen"}};
+const C=[
+{b:"Amiri",k:"Campaign reel",c:{en:"Wow!",mfe:"Ala!"},g:"radial-gradient(ellipse 30% 22% at 38% 42%,#d8c0a0,transparent 70%),radial-gradient(ellipse 40% 40% at 40% 85%,#3a2c20,transparent 75%),linear-gradient(#2b4a6a,#14202e)"},
+{b:"Def Jam",k:"Artist drop",c:{en:"Run it back",mfe:"Remet li ankor"},g:"radial-gradient(ellipse 22% 18% at 52% 40%,#eee,transparent 70%),radial-gradient(ellipse 45% 40% at 50% 88%,#222,transparent 75%),linear-gradient(#9a948a,#2a2926)"},
+{b:"Nike",k:"Street cut",c:{en:"Too clean",mfe:"Tro prop"},g:"radial-gradient(ellipse 24% 20% at 60% 36%,#cdb9a0,transparent 70%),radial-gradient(ellipse 50% 40% at 50% 82%,#1b2634,transparent 75%),linear-gradient(#7d8a64,#2d3a2a)"},
+{b:"Saint Laurent",k:"Teaser",c:{en:"Say less",mfe:"Pa bizin dir plis"},g:"radial-gradient(ellipse 90% 12% at 50% 6%,#e8dfc0,transparent 70%),radial-gradient(ellipse 20% 22% at 55% 55%,#7a8aa8,transparent 70%),linear-gradient(#0f1826,#05080e)"},
+{b:"Your brand",k:"Product drop",c:{en:"Hi, it’s you",mfe:"Se ou sa!"},g:"radial-gradient(ellipse 36% 26% at 50% 45%,#e0b080,transparent 70%),linear-gradient(#5a2c1c,#1a0d09)"},
+{b:"Your brand",k:"Behind the scenes",c:{en:"No notes",mfe:"Okenn remark"},g:"radial-gradient(ellipse 30% 25% at 42% 50%,#9ab0a0,transparent 70%),linear-gradient(#3b5a52,#121f1c)"},
+{b:"Your brand",k:"Launch film",c:{en:"Main character",mfe:"Personaz prinsipal"},g:"radial-gradient(ellipse 28% 20% at 55% 38%,#f2d9c0,transparent 70%),linear-gradient(#a0657a,#2a1520)"}];
+const st=document.getElementById('stage'),dots=document.getElementById('dots'),cnt=document.getElementById('count');
+let lang='en',a=3;
+const els=C.map((c,i)=>{
+  const e=document.createElement('button');e.className='card';e.style.setProperty('--g',c.g);e.setAttribute('aria-label',c.b+' — '+c.k);
+  e.innerHTML=`<span class="no">0${i+1}</span><span class="cap"></span><span class="lb">${c.b} — ${c.k}</span>`;
+  e.addEventListener('click',()=>go(i));st.appendChild(e);
+  const d=document.createElement('button');d.setAttribute('aria-label','Go to '+(i+1));d.addEventListener('click',()=>go(i));dots.appendChild(d);
+  return e});
+function layout(){
+  els.forEach((e,i)=>{
+    const o=i-a,ao=Math.abs(o),w=e.offsetWidth;
+    e.style.transform=`translate(-50%,-50%) translate(${o*w*.78}px,${ao*ao*w*.035}px) rotate(${o*7}deg) scale(${1-Math.min(ao,3)*.05})`;
+    e.style.zIndex=10-ao;e.style.opacity=ao>3?0:1;e.style.pointerEvents=ao>3?'none':'auto';
+    e.style.filter=ao?`brightness(${.62-Math.min(ao,3)*.06})`:'none';
+    e.classList.toggle('on',!ao);
+  });
+  [...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===a));
+  cnt.textContent=String(a+1).padStart(2,'0')+' / '+String(C.length).padStart(2,'0');
+}
+function go(i){a=(i+C.length)%C.length;layout()}
+document.getElementById('prev').onclick=()=>go(a-1);
+document.getElementById('next').onclick=()=>go(a+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(a-1);if(e.key==='ArrowRight')go(a+1)});
+let x0=null;
+st.addEventListener('pointerdown',e=>{x0=e.clientX});
+st.addEventListener('pointerup',e=>{if(x0!==null&&Math.abs(e.clientX-x0)>50)go(a+(e.clientX<x0?1:-1));x0=null});
+addEventListener('resize',layout);
+const PH=[[.77,['#3a2f2a','#0f0b0a','#c9a98c'],'He knew.','Li ti kone.'],[1.2,['#3f566e','#121a24','#d9c6a4'],'The lighting did that.','Lalimier ki finn fer sa.'],[.67,['#4a3030','#150b0b','#cfb09c'],'Outfit of the decade.','Tenu dekad la.'],[1,['#4a4230','#17130b','#d8c8a0'],'Main character. No notes.','Personaz prinsipal. Okenn remark.'],[.8,['#7a5a30','#1f1508','#e8d4a0'],'Golden hour showed up.','Gol aour finn vinn.'],[1.1,['#26314a','#080b14','#9fb0d0'],'Serious face, silly day.','Fas serye, zour bet.']];
+const pg=document.getElementById('pgrid');
+function renderPhotos(l){pg.innerHTML=PH.map((p,i)=>{const c=p[1],x=30+(i*17)%45,t=p[l==='en'?2:3];return `<a class="pt" href="photography.html" aria-label="${t}" style="--ar:${p[0]};--g:radial-gradient(ellipse 26% 19% at ${x}% 40%,${c[2]},transparent 70%),radial-gradient(ellipse 50% 32% at ${x}% 92%,#000a,transparent 75%),linear-gradient(${c[0]},${c[1]})"><span>${t}</span></a>`}).join('')}
+const nodes=document.querySelectorAll('[data-i]'),btns=document.querySelectorAll('.lang button');
+function setLang(l){
+  lang=l;nodes.forEach(n=>n.innerHTML=T[l][n.dataset.i]);
+  els.forEach((e,i)=>e.querySelector('.cap').textContent=C[i].c[l]);renderPhotos(l);
+  document.documentElement.lang=l;
+  btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+  try{localStorage.setItem('lutch-lang',l)}catch(e){}
+}
+btns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+let s='en';try{s=localStorage.getItem('lutch-lang')||'en'}catch(e){}
+setLang(T[s]?s:'en');layout();
+</script>
+</body>
+</html>
