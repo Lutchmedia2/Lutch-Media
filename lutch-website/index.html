@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lutch Media — Culture-led storytelling for brands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070707;--ink:#d9d6d0;--dim:#8a8782;--line:#232323;--serif:'Cormorant Garamond','Times New Roman',serif;--sans:'Inter',Helvetica,Arial,sans-serif;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+.wrap{padding-inline:clamp(20px,5vw,64px)}
+.tiny{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.serif{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
+.ul{display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--line);transition:border-color .3s}
+.ul:hover{border-color:var(--ink)}
+.btn{display:inline-flex;gap:14px;align-items:center;background:#f2f0ec;color:#0a0a0a;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:18px 24px;font-weight:500;transition:background .3s}
+.btn:hover{background:#fff}
+
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(22px + env(safe-area-inset-top,0px)) clamp(20px,5vw,64px) 22px;background:linear-gradient(#070707cc,transparent)}
+.logo{font-family:var(--sans);font-weight:300;font-size:20px;letter-spacing:.22em;line-height:1}
+.logo small{display:block;font-size:6px;letter-spacing:.5em;margin-top:3px;padding-left:2px;color:var(--dim)}
+.navr{display:flex;align-items:center;gap:34px}
+nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+nav ul a{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#c9c6c0}
+nav ul a:hover{color:#fff}
+.lang{display:inline-flex;border:1px solid #3a3a3a;border-radius:99px;padding:2px;background:#0b0b0b99;backdrop-filter:blur(6px)}
+.lang button{all:unset;cursor:pointer;font-size:9px;letter-spacing:.18em;padding:6px 11px;border-radius:99px;color:var(--dim);transition:.25s}
+.lang button[aria-pressed="true"]{background:#f2f0ec;color:#0a0a0a}
+.lang button:focus-visible{outline:1px solid #fff}
+@media(max-width:760px){.navr{gap:14px}nav ul{gap:12px}nav ul a{font-size:8px;letter-spacing:.12em}}
+@media(max-width:620px){nav{flex-wrap:wrap;row-gap:12px}.navr{display:contents}.lang{order:2}nav ul{order:3;width:100%;justify-content:space-between;gap:8px}nav ul a{font-size:8px;letter-spacing:.12em}nav ul a.bk{padding:7px 10px}.hero{padding-top:130px}}
+
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:90px}
+.hero::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(ellipse 32% 38% at 72% 34%,#5a4a40 0,transparent 70%),
+ radial-gradient(ellipse 50% 70% at 78% 70%,#1a1a1c 0,transparent 75%),
+ linear-gradient(90deg,#070707 30%,#0e0e10 70%,#16171a)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#070707 28%,transparent 75%),linear-gradient(transparent 70%,#070707)}
+.film{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.film i{position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:screen;opacity:.5}
+.film i:nth-of-type(1){width:42vw;height:42vw;right:2%;top:-12%;background:#8a6a50;animation:d1 18s ease-in-out infinite alternate}
+.film i:nth-of-type(2){width:30vw;height:50vw;right:24%;top:18%;background:#2c3a52;animation:d2 24s ease-in-out infinite alternate}
+.film i:nth-of-type(3){width:18vw;height:18vw;right:12%;top:32%;background:#c9a27c;animation:d3 13s ease-in-out infinite alternate}
+.film u{position:absolute;top:-25%;right:30%;width:7vw;height:150%;background:linear-gradient(#ffffff2e,transparent 80%);transform:rotate(20deg);filter:blur(16px);animation:sweep 15s ease-in-out infinite alternate}
+.film::after{content:"";position:absolute;inset:-50%;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");opacity:.1;animation:grain .9s steps(6) infinite}
+.film b{position:absolute;left:0;right:0;height:6svh;background:#000}
+.film b:nth-of-type(1){top:0}.film b:nth-of-type(2){bottom:0}
+.tc{position:absolute;right:clamp(20px,5vw,64px);bottom:calc(6svh + 18px);font:400 9px/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#b9b5ad;text-transform:uppercase}
+.tc em{font-style:normal;color:#e25555;animation:blink 1.4s steps(2) infinite}
+@keyframes d1{to{transform:translate(-8vw,10vh) scale(1.2)}}
+@keyframes d2{to{transform:translate(6vw,-8vh) scale(.85)}}
+@keyframes d3{to{transform:translate(-5vw,6vh) scale(1.4)}}
+@keyframes sweep{to{transform:translateX(-22vw) rotate(26deg)}}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
+@keyframes blink{50%{opacity:0}}
+.hero .in{position:relative;z-index:2;max-width:600px}
+.hero h1{font-size:clamp(48px,8vw,100px);margin:22px 0 28px;color:#cfccc6}
+.hero h1 em{font-style:italic}
+.hero p.lead{max-width:360px;color:var(--dim);font-size:13px;margin:0 0 36px}
+.row{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
+@media(max-width:800px){.hero::after{background:linear-gradient(90deg,#070707 10%,#070707aa)}}
+
+.trusted{border-block:1px solid var(--line);padding:26px 0 30px}
+.trusted .tiny{font-size:8px;display:block;margin-bottom:26px}
+.logos{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;color:#e8e5df}
+.logos span{white-space:nowrap}
+.l1{font-style:italic;font-weight:500;font-size:20px;letter-spacing:-.03em}
+.l2{letter-spacing:.3em;font-size:12px}
+.l3{font-weight:500;font-size:23px;letter-spacing:-.07em}
+.l4{font-family:var(--serif);font-weight:500;letter-spacing:.1em;font-size:19px}
+.l5{font-weight:500;font-size:12px;letter-spacing:-.02em}
+.l6{font-family:var(--serif);font-size:11px;letter-spacing:.2em}
+.l7{font-size:12px;letter-spacing:.06em;font-weight:500}
+.l8{font-weight:500;font-size:16px;font-style:italic}
+.l9{background:#e8e5df;color:#070707;font-weight:500;padding:3px 9px;font-size:15px}
+
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:16px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:m 40s linear infinite;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.marq b{font-weight:300;color:#ddd;margin:0 22px}
+@keyframes m{to{transform:translateX(-50%)}}
+
+.sec{padding-block:clamp(70px,10vw,120px)}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.services h2{font-size:clamp(34px,4.2vw,52px);margin:26px 0 44px;color:#d6d3cd}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:38px 50px}
+.grid div{border-bottom:1px solid var(--line);padding-bottom:26px}
+.grid .n{font-size:9px;color:var(--dim);letter-spacing:.2em}
+.grid h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;margin:18px 0 10px}
+.grid p{margin:0;font-size:12px;color:var(--dim)}
+@media(max-width:800px){.services{grid-template-columns:1fr}.grid{gap:28px}}
+
+.why{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;border-top:1px solid var(--line)}
+.why h2{font-size:clamp(34px,4.2vw,52px);color:#d6d3cd}
+.why .body p{font-family:var(--serif);font-size:clamp(20px,2vw,26px);line-height:1.4;color:#bcb9b3;margin:0 0 18px;max-width:560px}
+.why .sig{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:30px}
+@media(max-width:800px){.why{grid-template-columns:1fr;gap:30px}}
+.about{display:grid;grid-template-columns:1fr 1.15fr;border-top:1px solid var(--line)}
+.about .txt{padding:clamp(50px,9vw,110px) clamp(20px,5vw,64px)}
+.about h2{font-size:clamp(34px,4.2vw,52px);color:#d6d3cd}
+.about p{max-width:360px;font-size:12px;color:var(--dim);margin:30px 0 40px}
+.about .img{min-height:420px;background:
+ radial-gradient(ellipse 18% 24% at 62% 36%,#0a0a0a 0,transparent 80%),
+ radial-gradient(ellipse 34% 40% at 60% 85%,#0c0c0c 0,transparent 80%),
+ linear-gradient(#8c9db0,#4b5666 55%,#23272e)}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+
+.cta{text-align:center;border-top:1px solid var(--line);padding-block:clamp(70px,9vw,110px)}
+.cta h2{font-size:clamp(34px,5vw,56px);color:#d6d3cd}
+.cta p.sub{font-size:12px;color:var(--dim);margin:18px auto 36px;max-width:440px}
+.wkh{font-size:clamp(34px,5vw,64px);color:#d6d3cd;margin:16px 0 14px;line-height:1.05}
+.wkh em{font-style:italic}
+.wkp{color:var(--dim);font-size:13px;max-width:420px;margin:0}
+.vwrap{overflow:hidden}
+.vstage{position:relative;height:min(84svh,800px);user-select:none;touch-action:pan-y;cursor:grab}
+.vcard{position:absolute;left:50%;top:50%;width:min(26vw,40svh);min-width:150px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--g);transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s;will-change:transform;box-shadow:0 30px 60px #000a;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.vcard::after{content:"";position:absolute;inset:0;background:linear-gradient(#00000030,transparent 30%,transparent 55%,#000000c0)}
+.vcard.on::before{content:"";position:absolute;inset:-40%;z-index:1;background:linear-gradient(100deg,transparent 42%,#ffffff1f 50%,transparent 58%);animation:vshine 4.5s ease-in-out infinite}
+@keyframes vshine{from{transform:translateX(-60%)}to{transform:translateX(60%)}}
+.vcard:focus-visible{outline:1px solid #fff;outline-offset:-3px}
+.vno{position:absolute;z-index:2;left:12px;top:12px;font-size:9px;letter-spacing:.14em;color:#ffffff99}
+.vcap{position:absolute;z-index:2;left:0;right:0;bottom:15%;text-align:center;font-weight:500;font-size:clamp(14px,1.5vw,20px);text-transform:uppercase;color:#fff;text-shadow:0 2px 12px #000}
+.vlb{position:absolute;z-index:2;left:0;right:0;bottom:5%;text-align:center;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#e8e5df}
+.vctrl{display:flex;justify-content:center;align-items:center;gap:22px;margin:6px 0 30px}
+.varr{all:unset;cursor:pointer;width:46px;height:46px;border:1px solid #cfccc666;border-radius:50%;display:grid;place-items:center;transition:.25s}
+.varr:hover{background:#ffffff18}.varr:focus-visible{outline:1px solid #fff;outline-offset:3px}
+.vdots{display:flex;gap:12px}
+.vdots button{all:unset;cursor:pointer;width:8px;height:8px;border-radius:50%;background:#6a6762;transition:.3s}
+.vdots button[aria-current="true"]{background:#fff;transform:scale(1.4)}
+.vdots button:focus-visible{outline:1px solid #fff;outline-offset:3px}
+.phead h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,52px);line-height:1.05;color:#d6d3cd;margin:12px 0 30px;max-width:18ch}
+.pgrid{columns:3;column-gap:4px}
+@media(max-width:700px){.pgrid{columns:2}}
+.pt{position:relative;display:block;break-inside:avoid;margin-bottom:4px;aspect-ratio:var(--ar);background:var(--g);overflow:hidden}
+.pt::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#000000b0)}
+.pt span{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;font-family:var(--serif);font-size:clamp(17px,1.6vw,22px);line-height:1.15;color:#ece9e2}
+.pts{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.pts div{border-top:1px solid var(--line);padding-top:20px}
+.pts .n{font-size:9px;color:var(--dim);letter-spacing:.2em}
+.pts h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;margin:16px 0 10px}
+.pts p{margin:0;font-size:12px;color:var(--dim)}
+@media(max-width:800px){.pts{grid-template-columns:1fr 1fr;gap:30px}}
+.wkcta{text-align:center;margin-top:46px}
+@media(prefers-reduced-motion:reduce){.vcard{transition:none}.vcard.on::before{animation:none}}
+.cta h2.nocf{font-size:clamp(28px,3.6vw,42px);line-height:1.1}
+.cta h2.nocf em{font-style:italic}
+.cta p.sub{margin:22px auto 32px;font-size:14px;max-width:520px;line-height:1.7}
+.cta p.sub a{color:var(--ink);border-bottom:1px solid #555}
+.cta p.sub a:hover{border-color:#fff}
+.cta .mail{display:inline-block;font-family:var(--serif);font-size:clamp(26px,4.6vw,56px);color:#f2f0ec;border-bottom:1px solid #555;padding-bottom:6px;transition:border-color .3s;word-break:break-word}
+.cta .mail:hover{border-color:#fff}
+.about .brands{margin-top:6px}
+.about .brands p{font-family:var(--serif);font-size:clamp(20px,2vw,26px);line-height:1.4;color:#cfccc6;margin:12px 0 0;max-width:440px}
+nav ul a.bk{border:1px solid #cfccc6;padding:8px 14px;color:#f2f0ec;transition:.25s}
+nav ul a.bk:hover{background:#f2f0ec;color:#0a0a0a}
+.cta .nope{max-width:500px;margin:34px auto 0;font-size:12px;color:var(--dim);border-top:1px solid var(--line);padding-top:26px}
+.cta .nope a{color:var(--ink);border-bottom:1px solid #555}
+.cta .nope a:hover{border-color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding-block:34px;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+footer .links{display:flex;gap:34px}
+footer a:hover{color:#fff}
+footer .mail{line-height:2}
+@media(prefers-reduced-motion:reduce){.film *,.film::after{animation:none!important}.marq div{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo" aria-label="Lutch Media">LUTCH<small>MEDIA</small></a>
+  <div class="navr">
+    <ul>
+      <li><a href="#services" data-i="n_serv">Our services</a></li><li><a href="#work" data-i="n_work">Work</a></li><li><a href="#contact" data-i="n_con">Contact</a></li><li><a class="bk" href="book.html" data-i="n_book">Book now</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="mfe" aria-pressed="false" lang="mfe">KREOL</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="film" aria-hidden="true"><i></i><i></i><i></i><u></u><b></b><b></b></div>
+  <div class="in">
+    <span class="tiny" data-i="h_tag">Creative agency for modern brands</span>
+    <h1 class="serif" data-i="h_h1">Culture-led <em>storytelling</em> for brands.</h1>
+    <p class="lead" data-i="h_lead">Cinematic campaigns for brands that want to be part of culture, not just sell to it.</p>
+    <div class="row">
+      <a class="btn" href="#contact"><span data-i="b_start">Let’s make scene</span> <span>↗</span></a>
+      <a class="ul" href="#services"><span data-i="b_serv">Scroll more</span> ↓</a>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="sec wrap services" id="services">
+  <div>
+    <span class="tiny" style="font-size:8px" data-i="s_tag">What we do</span>
+    <h2 class="serif" data-i="s_h2">End-to-end creative for brands in fashion, music and culture.</h2>
+    <a class="btn" href="book.html"><span data-i="s_exp">Price &amp; book a shoot</span> <span>↗</span></a>
+  </div>
+  <div class="grid">
+    <div><span class="n">01</span><h3 data-i="s1t">Campaigns</h3><p data-i="s1p">Big ideas. Bold execution. Built for impact, not just impressions.</p></div>
+    <div><span class="n">02</span><h3 data-i="s2t">Creative direction</h3><p data-i="s2p">Defining the visual language that sets brands apart. Moodboards with actual opinions.</p></div>
+    <div><span class="n">03</span><h3 data-i="s3t">Content creation</h3><p data-i="s3p">Photo, video and social content that connects. Zero stock images, zero shame.</p></div>
+    <div><span class="n">04</span><h3 data-i="s4t">Artist &amp; branding</h3><p data-i="s4p">Building identities that resonate and endure. Longer shelf life than a trend.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="work" style="border-top:1px solid var(--line);padding-bottom:30px">
+  <span class="tiny" data-i="wk_tag">Our work</span>
+  <h2 class="serif wkh" data-i="wk_h2">Vertical, but make it <em>iconic.</em></h2>
+  <p class="wkp" data-i="wk_p">Reels, TikToks, Shorts and Stories, shot like cinema and cut for the scroll. Thumbs will stop.</p>
+</section>
+<div class="vwrap">
+  <div class="vstage" id="vstage" aria-roledescription="carousel"></div>
+  <div class="vctrl">
+    <button class="varr" id="vprev" aria-label="Previous"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#e8e5df"><path d="M7 1L1 7l6 6"/></svg></button>
+    <div class="vdots" id="vdots"></div>
+    <button class="varr" id="vnext" aria-label="Next"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#e8e5df"><path d="M1 1l6 6-6 6"/></svg></button>
+  </div>
+</div>
+<section class="sec wrap" style="padding-block:30px 10px">
+  <div class="pts">
+    <div><span class="n">01</span><h3 data-i="g1t">Shot for the thumb</h3><p data-i="g1p">9:16 from the first frame. Not a landscape video squished into a phone.</p></div>
+    <div><span class="n">02</span><h3 data-i="g2t">Hook in 1.5 seconds</h3><p data-i="g2p">If it doesn’t grab you before your thumb moves, we go again.</p></div>
+    <div><span class="n">03</span><h3 data-i="g3t">Made to be sent</h3><p data-i="g3p">Built for the group chat, the repost and the “omg look” text.</p></div>
+    <div><span class="n">04</span><h3 data-i="g4t">Every format</h3><p data-i="g4p">Reels, TikToks, Shorts, Stories, paid. Same energy, different shape.</p></div>
+  </div>
+</section>
+<section class="sec wrap" id="photography" style="padding-top:50px">
+  <div class="phead"><span class="tiny" data-i="pt">Photography portfolio</span><h2 data-i="ph2">Stills, because not everything has to move.</h2></div>
+  <div class="pgrid" id="pgrid"></div>
+  <div class="wkcta"><a class="btn" href="book.html"><span data-i="wk_book">Book a shoot</span> <span>↗</span></a></div>
+</section>
+
+<section class="about" id="about">
+  <div class="txt">
+    <span class="tiny" data-i="a_tag">About us</span>
+    <h2 class="serif" data-i="a_h2" style="margin-top:18px">10+ years of making big brands look unfairly good.</h2>
+    <p data-i="a_p">We’re a creative agency and production studio in London. For over a decade we’ve made campaigns for brands you’ve worn, streamed, driven past or wanted. Still not corporate. Still replying to emails, fast.</p>
+    <div class="brands" data-i="a_brands"></div>
+  </div>
+  <div class="img" role="img" aria-label="Placeholder for brand imagery"></div>
+</section>
+
+<section class="cta wrap" id="contact">
+  <span class="tiny" data-i="c_tag">Contact</span>
+  <h2 class="serif nocf" data-i="c_h2">No contact <em>form.</em></h2>
+  <p class="sub" data-i="c_cof">No contact forms. We don’t have those, and neither should you. <a href="mailto:hello@lutchmedia.com">Email us</a>, or let’s chat over a coffee. Coffee’s on us, oat milk debate on you.</p>
+  <a class="btn" href="mailto:hello@lutchmedia.com?subject=Let%27s%20make%20a%20scene"><span data-i="b_scene">Let’s Make A Scene</span> <span>↗</span></a>
+</section>
+
+<footer class="wrap">
+  <a href="#" class="logo" aria-label="Lutch Media">LUTCH<small>MEDIA</small></a>
+  <div class="mail"><a href="mailto:hello@lutchmedia.com">hello@lutchmedia.com</a><br>+44 7700 900123</div>
+  <div class="links"><a href="#">Instagram</a><a href="#">Vimeo</a><a href="#">TikTok</a></div>
+  <span>© Lutch Media 2024</span>
+</footer>
+
+<script>
+const T={
+en:{
+n_about:"About",n_serv:"Our services",n_work:"Work",wk_tag:"Our work",wk_h2:"Vertical, but make it <em>iconic.</em>",wk_p:"Reels, TikToks, Shorts and Stories, shot like cinema and cut for the scroll. Thumbs will stop.",pt:"Photography portfolio",ph2:"Stills, because not everything has to move.",wk_book:"Book a shoot",g1t:"Shot for the thumb",g1p:"9:16 from the first frame. Not a landscape video squished into a phone.",g2t:"Hook in 1.5 seconds",g2p:"If it doesn’t grab you before your thumb moves, we go again.",g3t:"Made to be sent",g3p:"Built for the group chat, the repost and the “omg look” text.",g4t:"Every format",g4p:"Reels, TikToks, Shorts, Stories, paid. Same energy, different shape.",n_cli:"Clients",n_con:"Contact",n_book:"Book now",
+h_tag:"Creative agency for modern brands",
+h_h1:"Culture-led <em>storytelling</em> for brands.",
+h_lead:"Cinematic campaigns for brands that want to be part of culture, not just sell to it.",
+b_start:"Let’s make scene",b_serv:"Scroll more",
+w_h2:"Why does Lutch exist?",
+w_body:"<p>Lutch exists because we got tired of agencies that sound like a LinkedIn post.</p><p>We wanted a studio that feels like the group chat: quick, honest, a bit chaotic, ideas flying everywhere.</p><p>No stiff suits. No ten-slide decks to say what one sentence could. Just people who live in culture, making work that moves it.</p><p>Here, a silly idea gets a fair shot. Sometimes it’s the best one in the room.</p><p>Fashion, music, film, strategy: one crew, one table, no gatekeeping.</p><p>We’re not trying to be the biggest agency. We’re trying to be the one you’d actually text.</p>",
+w_sig:"The Lutch crew",
+t_trust:"Trusted by forward-thinking brands (they have great taste, clearly)",
+s_tag:"What we do",s_h2:"End-to-end creative for brands in fashion, music and culture.",s_exp:"Price & book a shoot",
+s1t:"Campaigns",s1p:"Big ideas. Bold execution. Built for impact, not just impressions.",
+s2t:"Creative direction",s2p:"Defining the visual language that sets brands apart. Moodboards with actual opinions.",
+s3t:"Content creation",s3p:"Photo, video and social content that connects. Zero stock images, zero shame.",
+s4t:"Artist &amp; branding",s4p:"Building identities that resonate and endure. Longer shelf life than a trend.",
+a_tag:"About us",a_h2:"10+ years of making big brands look unfairly good.",
+a_p:"We’re a creative agency and production studio in London. For over a decade we’ve made campaigns for brands you’ve worn, streamed, driven past or wanted. Still not corporate. Still replying to emails, fast.",
+a_brands:"<span class='tiny'>A few names we’ve worked with (no big deal)</span><p>Adidas · Foot Locker · UGG · Spotify · Mercedes · Converse · YouTube · Nike</p>",
+c_tag:"Contact",c_h2:"No contact <em>form.</em>",c_sub:"We don’t have one. Neither should you.",c_cof:"No contact forms. We don’t have those, and neither should you. <a href='mailto:hello@lutchmedia.com'>Email us</a>, or let’s chat over a coffee. Coffee’s on us, oat milk debate on you.",b_scene:"Let’s Make A Scene",
+c_nope:"No contact forms. We don’t have those, and neither should you. <a href=\"mailto:hello@lutchmedia.com\">Email us</a>, or let’s chat over a coffee. Coffee’s on us, oat milk debate included.",
+marq:["Creative direction","Campaigns","Content","Films","Good vibes only (but make it strategic)"]},
+mfe:{
+n_about:"Lor nou",n_serv:"Nou servis",n_work:"Travay",wk_tag:"Nou travay",wk_h2:"Vertikal, me fer li <em>iconik.</em>",wk_p:"Reels, TikTok, Shorts ek Stories, filme kouma sinema, ek kouple pou skrol. Bann pous pou arete.",pt:"Portfolio fotografi",ph2:"Foto, parski pa tou kitsoz bizin bouze.",wk_book:"Rezerv enn shoot",g1t:"Filme pou ou pous",g1p:"9:16 depi premie frame. Pa enn video orizontal ki finn ganny kraze dan enn telefonn.",g2t:"Kapte ou an 1,5 segonn",g2p:"Si li pa kapte ou avan ou pous bouze, nou rekomans.",g3t:"Fer pou ganny voye",g3p:"Fer pou group chat, repost ek mesaz “get sa mo frer”.",g4t:"Tou format",g4p:"Reels, TikTok, Shorts, Stories, piblisite. Menm lenerzi, form diferan.",n_cli:"Klian",n_con:"Kontak",n_book:"Rezerv asterer",
+h_tag:"Ajans kreatif pou bann brand modern",
+h_h1:"<em>Storytelling</em> ki sorti dan lakiltir, pou bann brand.",
+h_lead:"Kanpayn sinematik pou bann brand ki anvi fer parti lakiltir, pa zis vann ladan.",
+b_start:"Annou fer sen",b_serv:"Skrol ankor",
+w_h2:"Akoz Lutch egziste?",
+w_body:"<p>Lutch egziste parski nou ti fatige ar bann ajans ki koze kouma enn post LinkedIn.</p><p>Nou ti anvi enn studio ki res kouma group chat: vit, onet, enn pe dezord, lide pe vole partou.</p><p>Pena kostim rid. Pena dis slide pou dir seki enn fraz kapav dir. Zis dimounn ki viv dan lakiltir, ki fer travay ki fer li avanse.</p><p>Isi, enn lide bet ena enn sans. Parfwa se li ki pli bon dan lasal.</p><p>Lamod, lamizik, sinema, strateji: enn ekip, enn latab, pena baryer.</p><p>Nou pa pe esey vinn pli gran ajans. Nou pe esey vinn sa enn ki ou vremem pou voye mesaz.</p>",
+w_sig:"Ekip Lutch",
+t_trust:"Bann brand ki get devan ek ena konfians dan nou (zot ena bon gou, evidaman)",
+s_tag:"Ki nou fer",s_h2:"Kreatif konple pou brand dan lamod, lamizik ek lakiltir.",s_exp:"Kalkile ek rezerv enn shoot",
+s1t:"Kanpayn",s1p:"Gran lide. Egzekisyon odasye. Fer pou ena impak, pa zis enpresyon.",
+s2t:"Direksion kreatif",s2p:"Definir lalang vizyel ki fer enn brand diferan. Moodboard ek vre lopinion.",
+s3t:"Kreasyon kontenu",s3p:"Foto, video ek kontenu sosyal ki konekte. Zero stock image, zero lahonte.",
+s4t:"Artis &amp; branding",s4p:"Konstri idantite ki res dan lespri dimounn. Dire pli lontan ki enn trend.",
+a_tag:"Lor nou",a_h2:"10+ an pe fer bann gran brand sanble bon. Menm tro bon.",
+a_p:"Nou enn ajans kreatif ek studio prodiksion Lonn. Pandan plis ki dis an, nou finn fer kanpayn pou bann brand ou finn deza mete, ekoute, kondwir ouswa anvi. Nou pa korporat. Nou ankor reponn email vit.",
+a_brands:"<span class='tiny'>Bann nom nou finn travay avek (pa gran zafer)</span><p>Adidas · Foot Locker · UGG · Spotify · Mercedes · Converse · YouTube · Nike</p>",
+c_tag:"Kontak",c_h2:"Okenn form <em>kontak.</em>",c_sub:"Nou pena enn. Ou pa bizin ena enn non plis.",c_cof:"Okenn form kontak. Nou pena sa, ek ou pa bizin ena sa non plis. <a href='mailto:hello@lutchmedia.com'>Ekrir nou enn email</a>, ouswa annou koz lor enn kafe. Kafe pou nou, debat lalet avwan pou ou.",b_scene:"Annou Fer Sen",
+c_nope:"Okenn form kontak. Nou pena sa, ek ou osi ou pa bizin ena sa. <a href=\"mailto:hello@lutchmedia.com\">Ekrir nou enn email</a>, ouswa annou koze lor enn kafe. Kafe pou nou, debat lalet avwan inkli.",
+marq:["Direksion kreatif","Kanpayn","Kontenu","Film","Bon vibe selman (me avek strateji)"]}
+};
+const VC=[
+['Amiri','Campaign reel','Wow!','Ala!','radial-gradient(ellipse 30% 22% at 38% 42%,#d8c0a0,transparent 70%),radial-gradient(ellipse 40% 40% at 40% 85%,#3a2c20,transparent 75%),linear-gradient(#2b4a6a,#14202e)'],
+['Def Jam','Artist drop','Run it back','Remet li ankor','radial-gradient(ellipse 22% 18% at 52% 40%,#eee,transparent 70%),radial-gradient(ellipse 45% 40% at 50% 88%,#222,transparent 75%),linear-gradient(#9a948a,#2a2926)'],
+['Nike','Street cut','Too clean','Tro prop','radial-gradient(ellipse 24% 20% at 60% 36%,#cdb9a0,transparent 70%),radial-gradient(ellipse 50% 40% at 50% 82%,#1b2634,transparent 75%),linear-gradient(#7d8a64,#2d3a2a)'],
+['Saint Laurent','Teaser','Say less','Pa bizin dir plis','radial-gradient(ellipse 90% 12% at 50% 6%,#e8dfc0,transparent 70%),radial-gradient(ellipse 20% 22% at 55% 55%,#7a8aa8,transparent 70%),linear-gradient(#0f1826,#05080e)'],
+['Your brand','Product drop','Hi, it’s you','Se ou sa!','radial-gradient(ellipse 36% 26% at 50% 45%,#e0b080,transparent 70%),linear-gradient(#5a2c1c,#1a0d09)'],
+['Your brand','Behind the scenes','No notes','Okenn remark','radial-gradient(ellipse 30% 25% at 42% 50%,#9ab0a0,transparent 70%),linear-gradient(#3b5a52,#121f1c)'],
+['Your brand','Launch film','Main character','Personaz prinsipal','radial-gradient(ellipse 28% 20% at 55% 38%,#f2d9c0,transparent 70%),linear-gradient(#a0657a,#2a1520)']];
+const PH=[[.77,['#3a2f2a','#0f0b0a','#c9a98c'],'He knew.','Li ti kone.'],[1.2,['#3f566e','#121a24','#d9c6a4'],'The lighting did that.','Lalimier ki finn fer sa.'],[.67,['#4a3030','#150b0b','#cfb09c'],'Outfit of the decade.','Tenu dekad la.'],[1,['#4a4230','#17130b','#d8c8a0'],'Main character. No notes.','Personaz prinsipal. Okenn remark.'],[.8,['#7a5a30','#1f1508','#e8d4a0'],'Golden hour showed up.','Gol aour finn vinn.'],[1.1,['#26314a','#080b14','#9fb0d0'],'Serious face, silly day.','Fas serye, zour bet.']];
+const vst=document.getElementById('vstage'),vdots=document.getElementById('vdots'),pg=document.getElementById('pgrid');let va=3;
+const vels=VC.map((c,i)=>{const e=document.createElement('button');e.className='vcard';e.style.setProperty('--g',c[4]);e.setAttribute('aria-label',c[0]+' — '+c[1]);e.innerHTML='<span class=vno>0'+(i+1)+'</span><span class=vcap></span><span class=vlb>'+c[0]+' — '+c[1]+'</span>';e.onclick=()=>vgo(i);vst.appendChild(e);const d=document.createElement('button');d.setAttribute('aria-label','Go to '+(i+1));d.onclick=()=>vgo(i);vdots.appendChild(d);return e});
+function vlayout(){vels.forEach((e,i)=>{const o=i-va,ao=Math.abs(o),w=e.offsetWidth;e.style.transform='translate(-50%,-50%) translate('+(o*w*.78)+'px,'+(ao*ao*w*.035)+'px) rotate('+(o*7)+'deg) scale('+(1-Math.min(ao,3)*.05)+')';e.style.zIndex=10-ao;e.style.opacity=ao>3?0:1;e.style.pointerEvents=ao>3?'none':'auto';e.style.filter=ao?'brightness('+(.62-Math.min(ao,3)*.06)+')':'none';e.classList.toggle('on',!ao)});[...vdots.children].forEach((d,i)=>d.setAttribute('aria-current',i===va))}
+function vgo(i){va=(i+VC.length)%VC.length;vlayout()}
+document.getElementById('vprev').onclick=()=>vgo(va-1);
+document.getElementById('vnext').onclick=()=>vgo(va+1);
+document.addEventListener('keydown',e=>{const r=vst.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;if(e.key==='ArrowLeft')vgo(va-1);if(e.key==='ArrowRight')vgo(va+1)});
+let vx=null;vst.addEventListener('pointerdown',e=>{vx=e.clientX});vst.addEventListener('pointerup',e=>{if(vx!==null&&Math.abs(e.clientX-vx)>50)vgo(va+(e.clientX<vx?1:-1));vx=null});
+addEventListener('resize',vlayout);
+function renderWork(l){const k=l==='en'?0:1;vels.forEach((e,i)=>e.querySelector('.vcap').textContent=VC[i][2+k]);
+pg.innerHTML=PH.map((p,i)=>{const c=p[1],x=30+(i*17)%45,t=p[2+k];return `<div class="pt" role="img" aria-label="${t}" style="--ar:${p[0]};--g:radial-gradient(ellipse 26% 19% at ${x}% 40%,${c[2]},transparent 70%),radial-gradient(ellipse 50% 32% at ${x}% 92%,#000a,transparent 75%),linear-gradient(${c[0]},${c[1]})"><span>${t}</span></div>`}).join('');vlayout()}
+const nodes=document.querySelectorAll('[data-i]'),btns=document.querySelectorAll('.lang button');
+function setLang(l){
+  const d=T[l];
+  nodes.forEach(n=>{n.innerHTML=d[n.dataset.i]});renderWork(l);
+  document.documentElement.lang=l;
+  document.title=l==='en'?'Lutch Media — Culture-led storytelling for brands':'Lutch Media — Storytelling ki sorti dan lakiltir';
+  btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+  try{localStorage.setItem('lutch-lang',l)}catch(e){}
+}
+btns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+let start='en';try{start=localStorage.getItem('lutch-lang')||'en'}catch(e){}
+setLang(T[start]?start:'en');
+</script>
+</body>
+</html>
