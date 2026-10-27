@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lutch Media — Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/lutch_box_B.png">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/photography.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo" aria-label="Lutch Media home"><img src="assets/lutch_box_B.png" alt="Lutch Media" width="760" height="760"></a>
+  <div class="navr">
+    <ul class="menu"><li><a href="index.html#services" data-i="n_serv">Our services</a></li><li><a href="index.html#work" data-i="n_work">Work</a></li><li><a href="index.html#contact" data-i="n_con">Contact</a></li><li><a class="bk" href="book.html" data-i="n_book">Book now</a></li></ul>
+    
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="mfe" aria-pressed="false" lang="mfe">KREOL</button></div>
+  </div>
+</nav>
+
+<header class="intro wrap">
+  <div>
+    <span class="tiny" data-i="tag">Photography</span>
+    <h1 data-i="h1">Photo dump, but make it <em>expensive.</em></h1>
+  </div>
+  <p data-i="sub">Fashion, portraits, street and everything in between. Shot on film, digital and pure vibes. Zero filters (okay, one).</p>
+</header>
+
+<div class="bar wrap">
+  <div class="chips" id="chips" role="group" aria-label="Filter"></div>
+  <span class="count" id="count"></span>
+</div>
+
+<main class="wall" id="wall"></main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" id="lx">Close</button><button class="p" id="lp" aria-label="Previous">←</button><button class="n" id="ln" aria-label="Next">→</button>
+  <figure><img class="img" id="li" alt=""><figcaption id="lc"></figcaption></figure>
+</div>
+
+<section class="cta wrap">
+  <h2 data-i="ch">Want your face (or brand) in the pile?</h2>
+  <p data-i="cp">No forms. No “circling back”. Just email us and let’s make scene.</p>
+  <a class="btn" href="mailto:hello@lutchmedia.com?subject=Let%27s%20make%20scene"><span data-i="cb">Let’s make scene</span> <span>↗</span></a>
+</section>
+<footer class="wrap"><span>© Lutch Media 2024</span><a href="mailto:hello@lutchmedia.com">hello@lutchmedia.com</a><span>Instagram · TikTok</span></footer>
+
+<script src="scripts/photos.js"></script>
+<script src="scripts/photography.js"></script>
+</body>
+</html>

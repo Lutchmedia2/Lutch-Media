@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lutch Media — Build your shoot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/lutch_box_B.png">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/book.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo" aria-label="Lutch Media home"><img src="assets/lutch_box_B.png" alt="Lutch Media" width="760" height="760"></a>
+  <div class="navr">
+    <ul class="menu"><li><a href="index.html#services" data-i="n_serv">Our services</a></li><li><a href="index.html#work" data-i="n_work">Work</a></li><li><a href="index.html#contact" data-i="n_con">Contact</a></li><li><a class="bk" href="book.html" data-i="n_book" aria-current="page">Book now</a></li></ul>
+    
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="mfe" aria-pressed="false" lang="mfe">KREOL</button></div>
+  </div>
+</nav>
+
+<header class="intro wrap">
+  <span class="tiny" data-i="tag">Production calculator</span>
+  <h1 data-i="h1">Build your shoot. <em>See the damage.</em></h1>
+  <p data-i="sub">Pick what you need and watch the number move. No awkward “so what’s your budget?” call.</p>
+</header>
+
+<div class="layout wrap">
+  <main id="steps"></main>
+  <aside class="aside" aria-label="Quote"><div class="sum" id="sum"></div><a class="btn go" href="#book" data-i="book">Book it ↓</a></aside>
+</div>
+
+<div class="mbar"><div><small data-i="tot">Total</small><b id="mtot">£0</b></div><a class="btn" href="#book" data-i="book">Book it ↓</a></div>
+<footer class="wrap"><span>© Lutch Media 2024</span><a href="mailto:hello@lutchmedia.com">hello@lutchmedia.com</a><span>Instagram · TikTok</span></footer>
+
+<script src="scripts/book.js"></script>
+</body>
+</html>
