@@ -228,13 +228,20 @@ vst.addEventListener("pointerup", (e) => {
   vx = null;
 });
 addEventListener("resize", vlayout);
+pg.addEventListener("click", (e) => {
+  const a = e.target.closest(".pt");
+  if (!a) return;
+  e.preventDefault();
+  PhotoViewer.open(PHOTOS.map((_, i) => i), +a.dataset.k, document.documentElement.lang === "en" ? "en" : "mfe", a);
+});
 function renderWork(l) {
   const k = l === "en" ? 0 : 1;
   vels.forEach((e, i) => (e.querySelector(".vcap").textContent = VC[i][2 + k]));
-  pg.innerHTML = PHOTOS.map((p) => {
+  pg.innerHTML = PHOTOS.map((p, i) => {
     const t = p.t[k];
-    return `<div class="pt" style="--ar:${p.ar}"><img src="${p.src}" alt="${t}" style="object-position:${p.pos}" loading="lazy" decoding="async"><span>${t}</span></div>`;
+    return `<a class="pt" href="photography.html" data-k="${i}" style="--ar:${p.ar}"><img src="${p.src}" alt="${t}" style="object-position:${p.pos}" loading="lazy" decoding="async"><span>${t}</span></a>`;
   }).join("");
+  PhotoViewer.relang(l);
   vlayout();
 }
 const nodes = document.querySelectorAll("[data-i]"),

@@ -1,8 +1,9 @@
 /* ---- CONFIG ---- */
 const RATE = { film: 150, photo: 120 },
   VAT = 0.2;
-/* To take real payments: point this at a small server endpoint that creates a Stripe Checkout session
-   (card + Apple Pay) and redirects. The page sends: amount (pence), method, name, email, summary. */
+/* Stripe: paste your deployed Worker URL here (see server/README.md). The page POSTs the booking as JSON
+   and the Worker returns a Stripe Checkout URL (card + Apple Pay / Google Pay) that we redirect to.
+   While this is empty, the page falls back to "email us this quote". */
 const CHECKOUT_URL = "";
 
 const TYPE = {
@@ -302,6 +303,9 @@ const T = {
     nt: "Payments aren’t switched on yet, so no money has moved. Email us this quote and we’ll send a payment link.",
     em: "Email us this quote",
     fine: "All prices in GBP. Your date is confirmed by email after booking.",
+    pf: "Payment couldn’t start. Please try again or email us.",
+    ok: "Payment received. Thank you! We’ll confirm your shoot date by email.",
+    cx: "Payment cancelled. No money has moved.",
     lic: "Photo licences cover the usage and term you choose above.",
   },
   mfe: {
@@ -343,6 +347,9 @@ const T = {
     nt: "Peyman pa ankor aktive, donk pena kas ki finn bouze. Ekrir nou sa kotasyon la ek nou pou voye enn lien peyman.",
     em: "Ekrir nou sa kotasyon la",
     fine: "Tou pri an GBP. Nou konfirm ou dat par email apre rezervasyon.",
+    pf: "Peyman pa finn kapav komans. Esey ankor ouswa ekrir nou.",
+    ok: "Peyman gagn. Mersi! Nou pou konfirm ou dat shoot par email.",
+    cx: "Peyman anile. Pena kas ki finn bouze.",
     lic: "Lisans foto kouver itilizasyon ek dire ou swazir pli anler.",
   },
 };
@@ -494,8 +501,32 @@ function pay(method) {
       c.rows.map((r) => `${r.l}: ${r.v ? GBP(r.v) : "Included"}`).join("\n") +
       `\nSubtotal: ${GBP(c.sub)}\nVAT: ${GBP(c.vat)}\nTotal: ${GBP(c.total)}\nDue today: ${GBP(c.due)} (${st.pay === "dep" ? "50% deposit" : "full"})`;
   if (CHECKOUT_URL) {
-    location.href =
-      CHECKOUT_URL + "?" + new URLSearchParams({ amount: c.due * 100, method, name: n, email: e, summary: sum });
+    const btns = document.querySelectorAll(".pays .btn");
+    btns.forEach((x) => (x.disabled = true));
+    fetch(CHECKOUT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: c.due * 100,
+        deposit: st.pay === "dep",
+        method,
+        name: n,
+        email: e,
+        project: document.getElementById("fp").value,
+        date: document.getElementById("fd").value,
+        notes: document.getElementById("fx").value,
+        summary: sum,
+      }),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (!d.url) throw new Error(d.error);
+        location.href = d.url;
+      })
+      .catch(() => {
+        err.textContent = t.pf;
+        btns.forEach((x) => (x.disabled = false));
+      });
     return;
   }
   const body = `Hi Lutch,\n\nName: ${n}\nEmail: ${e}\nProject: ${document.getElementById("fp").value}\nPreferred date: ${document.getElementById("fd").value}\nNotes: ${document.getElementById("fx").value}\nPreferred payment: ${method}\n\n${sum}`;
@@ -506,6 +537,21 @@ function pay(method) {
     encodeURIComponent(body);
   nt.classList.add("on");
   nt.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+const q = new URLSearchParams(location.search);
+function flash() {
+  const m = q.get("paid") ? T[lang].ok : q.get("cancelled") ? T[lang].cx : "";
+  let b = document.getElementById("flash");
+  if (!m) return b && b.remove();
+  if (!b) {
+    b = document.createElement("div");
+    b.id = "flash";
+    b.setAttribute("role", "status");
+    b.style.cssText =
+      "position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:50;background:#f2f0ec;color:#0a0a0a;padding:14px 22px;font-size:12px;max-width:90vw;text-align:center";
+    document.body.appendChild(b);
+  }
+  b.textContent = m;
 }
 const nodes = document.querySelectorAll("[data-i]"),
   btns = document.querySelectorAll(".lang button");
@@ -523,6 +569,7 @@ function setLang(l) {
   build();
   ["fn", "fe", "fp", "fd", "fx"].forEach((i, j) => (document.getElementById(i).value = keep[j]));
   update();
+  flash();
   try {
     localStorage.setItem("lutch-lang", l);
   } catch (e) {}

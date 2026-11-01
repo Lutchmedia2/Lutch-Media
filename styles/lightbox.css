@@ -1,0 +1,73 @@
+.pv {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #050505f2;
+  display: none;
+  place-items: center;
+  padding: 60px 24px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pv.on {
+  display: grid;
+}
+.pv figure {
+  margin: 0;
+  text-align: center;
+}
+.pv .img {
+  width: min(86vw, calc(70svh * var(--ar)), 640px);
+  display: block;
+  aspect-ratio: var(--ar);
+  object-fit: cover;
+  background: #111;
+  margin: 0 auto;
+  -webkit-user-drag: none;
+}
+.pv figcaption {
+  margin-top: 20px;
+  font-family: var(--serif);
+  font-size: 26px;
+  color: #ddd9d2;
+  line-height: 1.2;
+}
+.pv figcaption small {
+  display: block;
+  margin-top: 8px;
+  font: 300 9px var(--sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.pv button {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  color: #cfccc6;
+  font-size: 28px;
+  line-height: 1;
+  padding: 16px;
+}
+.pv button:hover {
+  color: #fff;
+}
+.pv button:focus-visible {
+  outline: 1px solid #fff;
+}
+.pv .x {
+  top: 14px;
+  right: clamp(6px, 3vw, 36px);
+}
+.pv .p,
+.pv .n {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pv .p {
+  left: clamp(2px, 2vw, 30px);
+}
+.pv .n {
+  right: clamp(2px, 2vw, 30px);
+}

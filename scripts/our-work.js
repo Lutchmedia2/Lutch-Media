@@ -146,11 +146,18 @@ st.addEventListener("pointerup", (e) => {
 });
 addEventListener("resize", layout);
 const pg = document.getElementById("pgrid");
+pg.addEventListener("click", (e) => {
+  const a = e.target.closest(".pt");
+  if (!a) return;
+  e.preventDefault();
+  PhotoViewer.open(PHOTOS.map((_, i) => i), +a.dataset.k, lang, a);
+});
 function renderPhotos(l) {
-  pg.innerHTML = PHOTOS.map((p) => {
+  pg.innerHTML = PHOTOS.map((p, i) => {
     const t = p.t[l === "en" ? 0 : 1];
-    return `<a class="pt" href="photography.html" style="--ar:${p.ar}"><img src="${p.src}" alt="${t}" style="object-position:${p.pos}" loading="lazy" decoding="async"><span>${t}</span></a>`;
+    return `<a class="pt" href="photography.html" data-k="${i}" style="--ar:${p.ar}"><img src="${p.src}" alt="${t}" style="object-position:${p.pos}" loading="lazy" decoding="async"><span>${t}</span></a>`;
   }).join("");
+  PhotoViewer.relang(l);
 }
 const nodes = document.querySelectorAll("[data-i]"),
   btns = document.querySelectorAll(".lang button");

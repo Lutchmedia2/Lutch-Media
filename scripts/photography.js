@@ -33,11 +33,9 @@ const T = {
   },
 };
 let f = "all",
-  lang = "en",
-  cur = 0;
+  lang = "en";
 const wall = document.getElementById("wall"),
   chips = document.getElementById("chips"),
-  lb = document.getElementById("lb"),
   cnt = document.getElementById("count");
 const txt = (p) => p.t[lang === "en" ? 0 : 1],
   pad = (n) => String(n + 1).padStart(2, "0");
@@ -51,10 +49,8 @@ function render() {
     b.setAttribute("aria-label", txt(p));
     b.innerHTML = `<img class="img" src="${p.src}" alt="" style="object-position:${p.pos}" loading="lazy" decoding="async"><span class="no">${pad(i)}</span><span class="cap"><b>${txt(p)}</b><small>${p.brand}</small></span>`;
     b.onclick = () => {
-      cur = i;
-      show();
-      lb.classList.add("on");
-      document.getElementById("lx").focus();
+      const v = vis();
+      PhotoViewer.open(v, v.indexOf(i), lang, b);
     };
     wall.appendChild(b);
   });
@@ -75,38 +71,6 @@ function mkChips() {
   });
 }
 const vis = () => PHOTOS.map((_, i) => i).filter((i) => f === "all" || PHOTOS[i].brand === f);
-function show() {
-  const p = PHOTOS[cur],
-    li = document.getElementById("li");
-  li.src = p.src;
-  li.alt = txt(p);
-  li.parentElement.style.setProperty("--ar", PHOTO_AR);
-  document.getElementById("lc").innerHTML = `${txt(p)}<small>${pad(cur)} · ${p.brand}</small>`;
-  document.getElementById("lx").textContent = T[lang].close;
-}
-function step(d) {
-  const v = vis(),
-    k = v.indexOf(cur);
-  cur = v[(k + d + v.length) % v.length];
-  show();
-}
-function close() {
-  lb.classList.remove("on");
-  const el = wall.querySelector(`[data-k="${cur}"]`);
-  el && el.focus();
-}
-document.getElementById("lx").onclick = close;
-document.getElementById("lp").onclick = () => step(-1);
-document.getElementById("ln").onclick = () => step(1);
-lb.addEventListener("click", (e) => {
-  if (e.target === lb) close();
-});
-document.addEventListener("keydown", (e) => {
-  if (!lb.classList.contains("on")) return;
-  if (e.key === "Escape") close();
-  if (e.key === "ArrowLeft") step(-1);
-  if (e.key === "ArrowRight") step(1);
-});
 const nodes = document.querySelectorAll("[data-i]"),
   btns = document.querySelectorAll(".lang button");
 function setLang(l) {
@@ -118,7 +82,7 @@ function setLang(l) {
   btns.forEach((b) => b.setAttribute("aria-pressed", b.dataset.l === l));
   mkChips();
   render();
-  if (lb.classList.contains("on")) show();
+  PhotoViewer.relang(l);
   try {
     localStorage.setItem("lutch-lang", l);
   } catch (e) {}
