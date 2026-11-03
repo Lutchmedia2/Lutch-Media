@@ -4,7 +4,7 @@ const RATE = { film: 150, photo: 120 },
 /* Stripe: paste your deployed Worker URL here (see server/README.md). The page POSTs the booking as JSON
    and the Worker returns a Stripe Checkout URL (card + Apple Pay / Google Pay) that we redirect to.
    While this is empty, the page falls back to "email us this quote". */
-const CHECKOUT_URL = "";
+const CHECKOUT_URL = "https://lutch-checkout.lutchmedia-uk.workers.dev";
 
 const TYPE = {
   k: "type",
